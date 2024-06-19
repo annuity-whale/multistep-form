@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multistep Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="logo.png" alt="Annuity Ocean Logo" class="logo">
+            <h1>Get Free Quote</h1>
+            <p>To see how we can help meet your financial goals</p>
+        </header>
+        <form id="multistepForm">
+            <div class="step active" data-step="1">
+                <h2>Step 1: Basic Information</h2>
+                <div class="form-group">
+                    <label for="name">What is your name?</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">What is your email address?</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">What is your phone number?</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <button type="button" class="next">Next</button>
+            </div>
+            <div class="step" data-step="2">
+                <h2>Step 2: Retirement Savings</h2>
+                <div class="form-group">
+                    <label for="savings">What is the estimated value of your current retirement savings?</label>
+                    <select id="savings" name="savings" required>
+                        <option value="">Select one</option>
+                        <option value="less-100k">Less than $100K</option>
+                        <option value="100k-250k">$100K - $250K</option>
+                        <option value="250k-500k">$250K - $500K</option>
+                        <option value="500k-750k">$500K - $750K</option>
+                        <option value="750k-1m">$750K - $1M</option>
+                        <option value="more-1m">More than $1M</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="currentSavings">Where are your retirement savings currently held?</label>
+                    <select id="currentSavings" name="currentSavings" required>
+                        <option value="">Select one</option>
+                        <option value="401k-past">401K with a past employer</option>
+                        <option value="401k-current">401K with a current employer</option>
+                        <option value="ira">IRA</option>
+                        <option value="other">Other (please specify)</option>
+                    </select>
+                    <input type="text" id="otherSavings" name="otherSavings" placeholder="Please specify if other">
+                </div>
+                <button type="button" class="prev">Previous</button>
+                <button type="button" class="next">Next</button>
+            </div>
+            <div class="step" data-step="3">
+                <h2>Step 3: Retirement Priorities</h2>
+                <div class="form-group">
+                    <label for="priority">What is your highest priority for your retirement investments?</label>
+                    <select id="priority" name="priority" required>
+                        <option value="">Select one</option>
+                        <option value="growth">Growth potential</option>
+                        <option value="stability">Stability and no risk</option>
+                        <option value="income">Income generation</option>
+                        <option value="preservation">Preservation of capital</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="concern">What is your biggest concern regarding your retirement savings?</label>
+                    <select id="concern" name="concern" required>
+                        <option value="">Select one</option>
+                        <option value="volatility">Market volatility</option>
+                        <option value="outliving">Outliving my savings</option>
+                        <option value="inflation">Inflation</option>
+                        <option value="diversification">Lack of diversification</option>
+                        <option value="other">Other (please specify)</option>
+                    </select>
+                    <input type="text" id="otherConcern" name="otherConcern" placeholder="Please specify if other">
+                </div>
+                <button type="button" class="prev">Previous</button>
+                <button type="button" class="next">Next</button>
+            </div>
+            <div class="step" data-step="4">
+                <h2>Step 4: Preferred Communication</h2>
+                <div class="form-group">
+                    <label for="introduction">How would you like us to introduce ourselves to you?</label>
+                    <select id="introduction" name="introduction" required>
+                        <option value="">Select one</option>
+                        <option value="email">Email introduction</option>
+                        <option value="phone">Phone call</option>
+                        <option value="sms">SMS/Text message</option>
+                        <option value="nopreference">No preference</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="callback">Would you prefer to schedule a callback at a convenient time?</label>
+                    <select id="callback" name="callback" required>
+                        <option value="">Select one</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+                <div class="form-group" id="callbackTimeGroup" style="display: none;">
+                    <label for="callbackTime">If yes, please specify a preferred time for a callback:</label>
+                    <select id="callbackTime" name="callbackTime">
+                        <option value="">Select one</option>
+                        <option value="morning">Morning (8 AM - 12 PM)</option>
+                        <option value="afternoon">Afternoon (12 PM - 4 PM)</option>
+                        <option value="evening">Evening (4 PM - 8 PM)</option>
+                        <option value="other">Other (please specify)</option>
+                    </select>
+                    <input type="text" id="otherCallbackTime" name="otherCallbackTime" placeholder="Please specify if other">
+                </div>
+                <button type="button" class="prev">Previous</button>
+                <button type="button" class="next">Next</button>
+            </div>
+            <div class="step" data-step="5">
+                <h2>Step 5: Additional Information</h2>
+                <div class="form-group">
+                    <label for="additionalInfo">Is there any additional information you would like to provide about your retirement goals or concerns?</label>
+                    <textarea id="additionalInfo" name="additionalInfo" rows="4"></textarea>
+                </div>
+                <button type="button" class="prev">Previous</button>
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+        <footer>
+            <p>*Personal consultations are available for those with at least $150,000 in investable assets.</p>
+            <p>We guarantee 100% privacy. Your information will not be shared.</p>
+        </footer>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
