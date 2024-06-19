@@ -137,6 +137,32 @@
     </div>
     <script>
         var form = document.getElementById("multistepForm");
+        var steps = document.querySelectorAll(".step");
+        var currentStep = 0;
+
+        function showStep(step) {
+            steps.forEach(function (s, index) {
+                s.classList.toggle("active", index === step);
+            });
+        }
+
+        document.querySelectorAll(".next").forEach(function (button) {
+            button.addEventListener("click", function () {
+                if (currentStep < steps.length - 1) {
+                    currentStep++;
+                    showStep(currentStep);
+                }
+            });
+        });
+
+        document.querySelectorAll(".prev").forEach(function (button) {
+            button.addEventListener("click", function () {
+                if (currentStep > 0) {
+                    currentStep--;
+                    showStep(currentStep);
+                }
+            });
+        });
 
         async function handleSubmit(event) {
             event.preventDefault();
@@ -167,6 +193,8 @@
         }
 
         form.addEventListener("submit", handleSubmit);
+
+        showStep(currentStep);
     </script>
 </body>
 </html>
