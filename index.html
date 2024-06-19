@@ -128,73 +128,12 @@
                 <button type="button" class="prev">Previous</button>
                 <button type="submit">Submit</button>
             </div>
-            <p id="form-status"></p>
         </form>
         <footer>
             <p>*Personal consultations are available for those with at least $150,000 in investable assets.</p>
             <p>We guarantee 100% privacy. Your information will not be shared.</p>
         </footer>
     </div>
-    <script>
-        var form = document.getElementById("multistepForm");
-        var steps = document.querySelectorAll(".step");
-        var currentStep = 0;
-
-        function showStep(step) {
-            steps.forEach(function (s, index) {
-                s.classList.toggle("active", index === step);
-            });
-        }
-
-        document.querySelectorAll(".next").forEach(function (button) {
-            button.addEventListener("click", function () {
-                if (currentStep < steps.length - 1) {
-                    currentStep++;
-                    showStep(currentStep);
-                }
-            });
-        });
-
-        document.querySelectorAll(".prev").forEach(function (button) {
-            button.addEventListener("click", function () {
-                if (currentStep > 0) {
-                    currentStep--;
-                    showStep(currentStep);
-                }
-            });
-        });
-
-        async function handleSubmit(event) {
-            event.preventDefault();
-            var status = document.getElementById("form-status");
-            var data = new FormData(event.target);
-            fetch(event.target.action, {
-                method: form.method,
-                body: data,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            }).then(response => {
-                if (response.ok) {
-                    status.innerHTML = "Thanks for your submission!";
-                    form.reset();
-                } else {
-                    response.json().then(data => {
-                        if (Object.hasOwn(data, 'errors')) {
-                            status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
-                        } else {
-                            status.innerHTML = "Oops! There was a problem submitting your form";
-                        }
-                    })
-                }
-            }).catch(error => {
-                status.innerHTML = "Oops! There was a problem submitting your form";
-            });
-        }
-
-        form.addEventListener("submit", handleSubmit);
-
-        showStep(currentStep);
-    </script>
+    <script src="scripts.js"></script>
 </body>
 </html>
